@@ -105,6 +105,7 @@ h1, h2, h3, p, figure { margin: 0; }
 .footer { border-top: 10px solid #333; background: var(--ink); color: white; }
 .footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 28px; font-size: 13px; }
 .footer p { color: #e0e0e0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
 
 @media (max-width: 720px) {
   .wrap { width: calc(100% - 36px); }
