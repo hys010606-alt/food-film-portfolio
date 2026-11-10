@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Pretendard Variable";
+  src: url("PretendardVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+}
+
 :root {
   --red: #e4002b;
   --bright-red: #ff0024;
@@ -8,7 +16,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 24px; }
-body { margin: 0; color: var(--ink); background: white; font: 16px/1.5 Arial, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; }
+body { margin: 0; color: var(--ink); background: white; font: 16px/1.5 "Pretendard Variable", sans-serif; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible, .favorite input:focus-visible + svg { outline: 2px solid var(--red); outline-offset: 4px; }
 h1, h2, h3, p, figure { margin: 0; }
