@@ -3,8 +3,8 @@ const pages = (stem, count) => Array.from({length: count}, (_, i) => `assets/${s
 const portfolio = {
   projects: [
     {id:'story', food:true, category:'planning', categoryLabel:'유튜브 영상 기획/제작', title:'스토리 퀴진 — 이야기 한 그릇', video:'assets/story-intro.mp4', poster:'assets/story-intro-poster.jpg', videoLabel:'첫 영상 인트로 열기', previewHeading:'채널 기획서', images:pages('story-slide',14), document:'assets/story-cuisine.pptx', documentLabel:'채널 기획서 PPTX 다운로드', tools:['인트로 영상','채널 콘셉트','콘텐츠 기획','브랜드 방향'], description:'세계 음식의 유래와 사연을 에피소드로 풀어내는 유튜브 채널 기획입니다. 첫 영상 인트로와 함께 시청 대상, 에피소드 구성, 채널의 시각적 방향을 담은 기획서를 볼 수 있습니다.'},
-    {id:'kfc', food:true, category:'design', categoryLabel:'콘텐츠 설계 · UI 디자인', title:'KFC 웹사이트 리디자인', images:['assets/kfc-final-v2.png',...pages('kfc-ui',15)], document:'assets/kfc-ui.pdf', documentLabel:'UI 디자인 PDF 열기', tools:['콘텐츠 설계','와이어프레임','UI 디자인'], description:'KFC의 프로모션과 신제품 정보를 쉽게 찾을 수 있도록 구성한 웹사이트 리디자인입니다. 벤치마킹, 컬러와 UI 가이드, 와이어프레임, 최종 시안을 함께 담았습니다.'},
-    {id:'cg', food:true, category:'web', categoryLabel:'웹앱 개발', title:'웹앱 개발 — 혼밥일지', app:'https://hys010606-alt.github.io/food-film-portfolio/honbap/', video:'assets/cg.mp4', videoLabel:'웹앱 소개 영상 열기', tools:['웹앱 개발'], description:'요리 타이머, 식사 기록, 레시피를 한곳에 담은 웹앱입니다. 웹앱을 직접 열어 기능을 체험하거나 소개 영상으로 화면 구성과 사용 흐름을 볼 수 있습니다.'},
+    {id:'kfc', food:true, category:'design', categoryLabel:'콘텐츠 설계 · UI 디자인', title:'KFC 웹사이트 리디자인', app:'kfc/index.html', appLabel:'KFC 웹 시안 열기', images:['assets/kfc-final-v2.png',...pages('kfc-ui',15)], document:'assets/kfc-ui.pdf', documentLabel:'UI 디자인 PDF 열기', tools:['콘텐츠 설계','와이어프레임','UI 디자인'], description:'KFC의 프로모션과 신제품 정보를 쉽게 찾을 수 있도록 구성한 웹사이트 리디자인입니다. HTML·CSS로 구현한 웹 시안과 벤치마킹, 디자인 가이드, 최종 시안을 함께 볼 수 있습니다.'},
+    {id:'cg', food:true, category:'web', categoryLabel:'웹앱 개발', title:'웹앱 개발 — 혼밥일지', app:'https://hys010606-alt.github.io/food-film-portfolio/honbap/', appLabel:'혼밥일지 웹앱 열기', video:'assets/cg.mp4', videoLabel:'웹앱 소개 영상 열기', tools:['웹앱 개발'], description:'요리 타이머, 식사 기록, 레시피를 한곳에 담은 웹앱입니다. 웹앱을 직접 열어 기능을 체험하거나 소개 영상으로 화면 구성과 사용 흐름을 볼 수 있습니다.'},
     {id:'bose', category:'video', categoryLabel:'광고 제작 · 브랜드 영상', title:'BOSE — 세상의 소음을 끄다', video:'assets/bose.mp4', tools:['광고 제작','콘셉트 기획','콘티'], description:'BOSE 이어버드를 소재로 콘셉트 기획과 콘티부터 영상으로 구현한 광고 제작 작품입니다. 소음이 가득한 일상에서 나만의 고요와 몰입을 되찾는 순간을 담은 완성 영상과 제작기획서를 소개합니다.', document:'assets/bose-plan-design.pdf', documentLabel:'광고 제작기획서 PDF 열기', images:pages('bose-plan-design',12)},
     {id:'detail', category:'design', categoryLabel:'소셜커머스 상세페이지 제작', title:'boboni — 이불 수납 파우치', images:['assets/boboni-detail-v2.webp'], document:'assets/boboni-detail-v2.png', documentLabel:'상세페이지 전체 이미지 열기', tools:['소셜커머스','상세페이지 제작','제품 정보 구성','비주얼 디자인'], description:'보보니 이불 수납 파우치를 소개하는 소셜커머스 상세페이지 제작 작품입니다. 제품의 장점을 쉽게 이해하고 구매에 필요한 정보를 확인할 수 있도록 사용 장면, 여섯 가지 수납 포인트, 압축 전후 비교, 컬러와 사이즈를 구성했습니다.'},
     {id:'illustration', category:'design', categoryLabel:'2D 그래픽 · 일러스트레이션', title:'하나투어 여행 프로모션', images:['assets/illustration-6.jpg',...pages('illustration',5),'assets/illustration-7.jpg'], document:'assets/illustration.pdf', documentLabel:'일러스트레이션 PDF 열기', tools:['일러스트레이션','포스터','목업'], description:'여러 나라의 랜드마크를 일러스트로 표현한 여행 프로모션 포스터입니다. 디자인 콘셉트와 타깃 분석에서 스케치, 시안, 목업까지 제작 과정을 소개합니다.'},
@@ -74,7 +74,7 @@ function openProject(project) {
     return a;
   };
   if (project.app) {
-    const appLink = link(project.app, '혼밥일지 웹앱 열기');
+    const appLink = link(project.app, project.appLabel);
     appLink.className = 'primary-link app-link';
     videoArea.append(appLink);
   }
