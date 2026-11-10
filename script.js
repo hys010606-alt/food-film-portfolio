@@ -3,7 +3,7 @@ const pages = (stem, count) => Array.from({length: count}, (_, i) => `assets/${s
 const portfolio = {
   projects: [
     {id:'story', food:true, category:'planning', categoryLabel:'유튜브 영상 기획/제작', title:'스토리 퀴진 — 이야기 한 그릇', video:'assets/story-intro.mp4', poster:'assets/story-intro-poster.jpg', videoLabel:'첫 영상 인트로 열기', previewHeading:'채널 기획서', images:pages('story-slide',14), document:'assets/story-cuisine.pptx', documentLabel:'채널 기획서 PPTX 다운로드', tools:['인트로 영상','채널 콘셉트','콘텐츠 기획','브랜드 방향'], description:'세계 음식의 유래와 사연을 에피소드로 풀어내는 유튜브 채널 기획입니다. 첫 영상 인트로와 함께 시청 대상, 에피소드 구성, 채널의 시각적 방향을 담은 기획서를 볼 수 있습니다.'},
-    {id:'kfc', food:true, category:'design', categoryLabel:'콘텐츠 설계 · UI 디자인', title:'KFC 웹사이트 리디자인', app:'kfc/index.html', appLabel:'KFC 웹 시안 열기', images:['assets/kfc-final-v2.png',...pages('kfc-ui',15)], document:'assets/kfc-ui.pdf', documentLabel:'UI 디자인 PDF 열기', tools:['콘텐츠 설계','와이어프레임','UI 디자인'], description:'KFC의 프로모션과 신제품 정보를 쉽게 찾을 수 있도록 구성한 웹사이트 리디자인입니다. HTML·CSS로 구현한 웹 시안과 벤치마킹, 디자인 가이드, 최종 시안을 함께 볼 수 있습니다.'},
+    {id:'kfc', food:true, category:'design', title:'KFC 웹사이트 리디자인', href:'kfc/index.html'},
     {id:'cg', food:true, category:'web', categoryLabel:'웹앱 개발', title:'혼밥일지 — 웹앱 개발', app:'https://hys010606-alt.github.io/food-film-portfolio/honbap/', appLabel:'혼밥일지 웹앱 열기', tools:['웹앱 개발'], description:'요리 타이머, 식사 기록, 레시피를 한곳에 담은 웹앱을 직접 개발했습니다. 웹앱을 열어 기능을 체험할 수 있습니다.'},
     {id:'honbap-promo', food:true, category:'video', categoryLabel:'홍보 영상 제작', title:'혼밥일지 — 웹앱 홍보 영상', video:'assets/cg.mp4', poster:'assets/honbap-promo.jpg', videoLabel:'홍보 영상 원본 열기', tools:['홍보 영상 제작','영상 편집'], description:'직접 개발한 혼밥일지를 소개하기 위해 제작한 홍보 영상입니다. 일상에서 한 끼를 준비하는 장면과 웹앱의 사용 화면을 이어, 혼자서도 한 끼를 챙기고 기록하는 흐름을 보여줍니다.'},
     {id:'bose', category:'video', categoryLabel:'광고 제작 · 브랜드 영상', title:'BOSE — 세상의 소음을 끄다', video:'assets/bose.mp4', tools:['광고 제작','콘셉트 기획','콘티'], description:'BOSE 이어버드를 소재로 콘셉트 기획과 콘티부터 영상으로 구현한 광고 제작 작품입니다. 소음이 가득한 일상에서 나만의 고요와 몰입을 되찾는 순간을 담은 완성 영상과 제작기획서를 소개합니다.', document:'assets/bose-plan-design.pdf', documentLabel:'광고 제작기획서 PDF 열기', images:pages('bose-plan-design',12)},
@@ -24,17 +24,23 @@ const galleryCovers = {
 portfolio.projects.forEach(project => {
   const article = document.createElement('article');
   article.className = 'project';
-  const button = document.createElement('button'); button.className = `project-button gallery-${project.id}`;
-  button.setAttribute('aria-label', `${project.title} 프로젝트 자세히 보기`);
-  button.setAttribute('aria-haspopup', 'dialog');
+  const tile = document.createElement(project.href ? 'a' : 'button');
+  tile.className = `project-button gallery-${project.id}`;
+  if (project.href) {
+    tile.href = project.href;
+  } else {
+    tile.type = 'button';
+    tile.setAttribute('aria-label', `${project.title} 프로젝트 자세히 보기`);
+    tile.setAttribute('aria-haspopup', 'dialog');
+    tile.addEventListener('click', () => openProject(project));
+  }
   const cover = galleryCovers[project.id];
-  button.type = "button";
-  button.innerHTML = `<span class="gallery-art"><img src="${cover.src}" alt="" loading="lazy" width="800" height="800"></span><span class="gallery-caption"><span class="gallery-name">${project.title}</span></span>`;
+  tile.innerHTML = `<span class="gallery-art"><img src="${cover.src}" alt="" loading="lazy" width="800" height="800"></span><span class="gallery-caption"><span class="gallery-name">${project.title}</span></span>`;
   if (cover.role) {
     const role = document.createElement('span'); role.className = 'gallery-role'; role.textContent = cover.role;
-    button.querySelector('.gallery-caption').prepend(role);
+    tile.querySelector('.gallery-caption').prepend(role);
   }
-  button.addEventListener('click', () => openProject(project)); article.append(button); grid.append(article);
+  article.append(tile); grid.append(article);
 });
 document.querySelectorAll('[data-filter]').forEach(button => {
   button.addEventListener('click', () => {
