@@ -6,9 +6,14 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="허윤성의 KFC 웹사이트 리디자인 포트폴리오 데모">
   <title>KFC 웹사이트 리디자인 · 허윤성 포트폴리오</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=icons-26">
 </head>
 <body id="top">
+  <svg class="icon-library" aria-hidden="true" focusable="false">
+    <symbol id="heart-shape" viewBox="0 0 24 24">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/>
+    </symbol>
+  </svg>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
   <div class="project-bar">
     <div class="wrap">
@@ -37,10 +42,10 @@
       <svg class="art hero-art" viewBox="413 70 243 235" width="243" height="235" role="img" aria-label="핫크리스피 치킨이 담긴 KFC 복버켓과 소스 두 개"><image href="../assets/kfc-final-v2.png" width="841" height="2048" /></svg>
     </section>
     <nav class="quick-nav wrap" aria-label="바로가기">
-      <a href="#menu"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3a5 5 0 0 1 5 5c0 4-4 6-7 6l-4 4a2 2 0 1 1-3-2.7 2 2 0 1 1 2.7-3l4-4C12 5 12 3 14 3Z"/></svg>치킨</a>
-      <a href="#menu"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 9 2 12h12l2-12H4ZM8 9 7 3m5 6V2m4 7 1-5"/></svg>세트 메뉴</a>
-      <a href="#promotions"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Zm6 9 6-6m-6 1h.01m6 4h.01"/></svg>쿠폰</a>
-      <a href="#delivery"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg>앱 안내</a>
+      <a href="#menu"><svg class="quick-icon" viewBox="184 328 32 32" aria-hidden="true" focusable="false"><image href="../assets/kfc-final-v2.png" width="841" height="2048" /></svg>치킨</a>
+      <a href="#menu"><svg class="quick-icon" viewBox="308 328 32 32" aria-hidden="true" focusable="false"><image href="../assets/kfc-final-v2.png" width="841" height="2048" /></svg>세트 메뉴</a>
+      <a href="#promotions"><svg class="quick-icon" viewBox="450 328 32 32" aria-hidden="true" focusable="false"><image href="../assets/kfc-final-v2.png" width="841" height="2048" /></svg>쿠폰</a>
+      <a href="#delivery"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="1.5" width="14" height="21" rx="3" fill="currentColor"/><rect x="7" y="5" width="10" height="12" rx="1" fill="white"/><circle cx="12" cy="19.75" r="1" fill="white"/></svg>앱 안내</a>
     </nav>
     <section class="section wrap" id="menu" aria-labelledby="menu-title">
       <h2 id="menu-title">지금 가장 <em>Hot!</em> 한 메뉴</h2>
@@ -50,7 +55,7 @@
           <div class="menu-meta"><h3>맵징거타워 더블팩</h3><p>19,900원</p></div>
           <label class="favorite">
             <input type="checkbox" aria-label="맵징거타워 더블팩 찜하기">
-            <span aria-hidden="true"></span>
+            <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#heart-shape"/></svg>
           </label>
         </article>
         <article class="menu-card">
@@ -58,7 +63,7 @@
           <div class="menu-meta"><h3>맵징거 더블박스</h3><p>16,900원</p></div>
           <label class="favorite">
             <input type="checkbox" aria-label="맵징거 더블박스 찜하기">
-            <span aria-hidden="true"></span>
+            <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#heart-shape"/></svg>
           </label>
         </article>
         <article class="menu-card">
@@ -66,7 +71,7 @@
           <div class="menu-meta"><h3>맵징거 싱글박스</h3><p>13,900원</p></div>
           <label class="favorite">
             <input type="checkbox" aria-label="맵징거 싱글박스 찜하기">
-            <span aria-hidden="true"></span>
+            <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#heart-shape"/></svg>
           </label>
         </article>
       </div>

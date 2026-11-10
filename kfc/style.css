@@ -10,10 +10,11 @@
 html { scroll-padding-top: 24px; }
 body { margin: 0; color: var(--ink); background: white; font: 16px/1.5 Arial, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; }
 a { color: inherit; text-decoration: none; }
-a:focus-visible, input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 4px; }
+a:focus-visible, .favorite input:focus-visible + svg { outline: 2px solid var(--red); outline-offset: 4px; }
 h1, h2, h3, p, figure { margin: 0; }
 .wrap { width: min(1100px, calc(100% - 72px)); margin-inline: auto; }
 .art { display: block; width: 100%; height: auto; overflow: hidden; }
+.icon-library { position: absolute; width: 0; height: 0; overflow: hidden; }
 .skip-link { position: fixed; z-index: 2; top: 8px; left: 8px; padding: 8px 12px; color: white; background: var(--ink); transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
 
@@ -36,7 +37,7 @@ h1, h2, h3, p, figure { margin: 0; }
 .hero-link:hover { background: var(--red); }
 .quick-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: 760px; padding-top: 12px; }
 .quick-nav a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 49px; padding: 7px; border: 1px solid var(--line); border-radius: 10px; font-size: 14px; font-weight: 800; }
-.quick-nav svg { flex-shrink: 0; color: var(--red); }
+.quick-icon { display: block; flex: none; width: 28px; height: 28px; overflow: hidden; color: var(--red); }
 .quick-nav a:hover { border-color: var(--red); color: var(--red); }
 
 .section { padding-block: clamp(43px, 6vw, 78px); }
@@ -51,10 +52,8 @@ h1, h2, h3, p, figure { margin: 0; }
 .menu-meta p { margin-top: 4px; color: var(--red); font-size: 14px; font-weight: 800; }
 .favorite { position: absolute; right: 10px; bottom: 14px; display: grid; place-items: center; width: 36px; height: 36px; cursor: pointer; }
 .favorite input { position: absolute; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.favorite span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 24px; line-height: 1; pointer-events: none; }
-.favorite span::before { content: "♡"; }
-.favorite input:checked + span { color: var(--red); }
-.favorite input:checked + span::before { content: "♥"; }
+.heart-icon { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; pointer-events: none; }
+.favorite input:checked + svg { color: var(--red); fill: currentColor; }
 #promotions { padding-top: 0; }
 .promo-grid figure { display: grid; grid-template-rows: 1fr auto; min-width: 0; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
 .promo-art { align-self: center; width: min(100%, 256px); margin-inline: auto; }
