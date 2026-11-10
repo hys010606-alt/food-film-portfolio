@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff9ef">
+  <meta name="description" content="혼자여도 근사한 한 끼. 요리 타이머로 시작하고, 식사 기록으로 남기는 혼밥일지.">
+  <title>혼밥일지 — 나를 위한 한 끼</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <div class="app-shell">
+    <main id="main" tabindex="-1"></main>
+    <nav class="bottom-nav" aria-label="주요 메뉴">
+      <a href="#home" data-nav="home"><img src="assets/home-icon.svg" alt=""><span>홈</span></a>
+      <a href="#timer" data-nav="timer"><img src="assets/timer-icon.svg" alt=""><span>타이머</span><i id="timer-dot" hidden></i></a>
+      <a href="#records" data-nav="records"><img src="assets/record-icon.svg" alt=""><span>기록</span></a>
+      <a href="#recipes" data-nav="recipes"><img src="assets/recipe-icon.svg" alt=""><span>레시피</span></a>
+    </nav>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div><button class="dialog-close icon-button" aria-label="팝업 닫기" data-action="close-dialog">×</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
