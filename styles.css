@@ -140,7 +140,7 @@ h1 em { color: var(--accent); font-style: normal; }
 
 .section { padding-block: clamp(56px, 7vw, 104px); }
 #work { border-top: 1px solid var(--line); }
-.contact { display: flex; align-items: center; justify-content: flex-start; gap: clamp(32px, 7vw, 100px); }
+.contact { display: flex; align-items: flex-end; justify-content: flex-start; gap: clamp(32px, 7vw, 100px); }
 h2 { margin-top: 8px; font-size: clamp(32px, 4vw, 54px); line-height: 1.22; letter-spacing: -.066em; font-weight: 800; }
 .contact-details { color: var(--muted); font-size: 16px; }
 .filters {
