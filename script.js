@@ -16,8 +16,8 @@ const galleryCovers = {
   cg: { src: 'assets/gallery-cg.jpg', role: '웹앱 개발' },
   'honbap-promo': { src: 'assets/honbap-promo.jpg', role: '홍보 영상 제작' },
   bose: { src: 'assets/mockup-bose-street-screen-v1.webp', role: '광고 제작 · 브랜드 영상' },
-  detail: { src: 'assets/mockup-boboni-imac-v1.webp', role: '소셜커머스 상세페이지 제작' },
-  kfc: { src: 'assets/mockup-kfc-imac-v1.webp' },
+  detail: { src: 'assets/mockup-boboni-imac-v2.png', role: '소셜커머스 상세페이지 제작' },
+  kfc: { src: 'assets/mockup-kfc-imac-v2.png' },
   illustration: { src: 'assets/mockup-hana-street-flyer-v1.webp' },
   story: { src: 'assets/mockup-story-youtube-v1.webp', role: '유튜브 영상 기획/제작' }
 };
