@@ -15,12 +15,12 @@ const grid = document.querySelector('#projects');
 const projectOrder = ['story', 'honbap-promo', 'bose', 'cg', 'kfc', 'detail', 'illustration'];
 portfolio.projects.sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 const galleryCovers = {
-  cg: { src: 'assets/gallery-cg.jpg', role: '웹앱 개발' },
+  cg: { src: 'assets/honbap-app-home-v2.png', role: '웹앱 기획 · 개발' },
   'honbap-promo': { src: 'assets/honbap-promo.jpg', role: '홍보 영상 제작' },
   bose: { src: 'assets/mockup-bose-street-screen-v1.webp', role: '광고 제작 · 브랜드 영상' },
   detail: { src: 'assets/mockup-boboni-imac-v2.png', role: '소셜커머스 상세페이지 제작' },
-  kfc: { src: 'assets/mockup-kfc-imac-v2.png' },
-  illustration: { src: 'assets/mockup-hana-street-flyer-v1.webp' },
+  kfc: { src: 'assets/mockup-kfc-imac-v2.png', role: '웹사이트 리디자인 · HTML/CSS 구현' },
+  illustration: { src: 'assets/mockup-hana-street-flyer-v1.webp', role: '여행 프로모션 · 일러스트레이션' },
   story: { src: 'assets/mockup-story-youtube-v1.webp', role: '유튜브 영상 기획/제작' }
 };
 portfolio.projects.forEach(project => {
@@ -40,6 +40,13 @@ portfolio.projects.forEach(project => {
   }
   const cover = galleryCovers[project.id];
   tile.innerHTML = `<span class="gallery-art"><img src="${cover.src}" alt="" loading="lazy" width="800" height="800"></span><span class="gallery-caption"><span class="gallery-name">${project.title}</span><span class="gallery-format">${project.href ? '웹사이트 · 새 탭' : project.video ? '영상 · 상세 보기' : '디자인 · 상세 보기'}</span></span>`;
+  if (project.id === 'cg') {
+    const screen = tile.querySelector('.gallery-art img');
+    const phone = document.createElement('span'); phone.className = 'iphone-mockup';
+    screen.alt = '혼밥일지 실제 홈 화면 — 레시피, 조리 타이머, 한 끼 기록';
+    screen.width = 390; screen.height = 844;
+    screen.replaceWith(phone); phone.append(screen);
+  }
   if (cover.role) {
     const role = document.createElement('span'); role.className = 'gallery-role'; role.textContent = cover.role;
     tile.querySelector('.gallery-caption').prepend(role);

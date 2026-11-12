@@ -309,3 +309,11 @@ dialog::backdrop { background: #1a1712b8; backdrop-filter: blur(4px); }
 .zoom-viewport { max-height: calc(90dvh - 70px); overflow: auto; overscroll-behavior: contain; }
 #zoom-image { display: block; max-width: none; height: auto; }
 .preview-hint { margin: -4px 0 12px; font-size: 12px; color: var(--muted); }
+
+/* Centered iPhone mockup using the actual live app capture. */
+.gallery-cg .gallery-art { display: grid; place-items: center; background: radial-gradient(ellipse at center, #f5eee3, #e3dacd); }
+.iphone-mockup { position: relative; display: block; height: 90%; aspect-ratio: 390 / 900; padding: 7.5% 1.3% 1.3%; background: #161616; border: 2px solid #a8a29a; border-radius: 12% / 5.5%; overflow: hidden; box-shadow: 0 5px 12px #30291c15; }
+.iphone-mockup::before { content: ''; position: absolute; width: 29%; height: 2.3%; top: 2.2%; left: 35.5%; background: #050505; border-radius: 999px; z-index: 1; }
+.gallery-cg .iphone-mockup { background: #fff8ee; box-shadow: 0 0 0 2px #222, 0 5px 12px #30291c15; }
+.gallery-cg .iphone-mockup img { width: 100%; height: 100%; object-fit: cover; object-position: left top; border-radius: 0 0 9% 9%; }
+.iphone-mockup { padding: 0; } .gallery-cg .iphone-mockup img { position: absolute; top: 6.5%; left: 2%; width: 96%; height: 92%; object-fit: cover; }
