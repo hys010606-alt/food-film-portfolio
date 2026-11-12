@@ -12,6 +12,8 @@ const portfolio = {
   ]
 };
 const grid = document.querySelector('#projects');
+const projectOrder = ['story', 'honbap-promo', 'bose', 'cg', 'kfc', 'detail', 'illustration'];
+portfolio.projects.sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 const galleryCovers = {
   cg: { src: 'assets/gallery-cg.jpg', role: '웹앱 개발' },
   'honbap-promo': { src: 'assets/honbap-promo.jpg', role: '홍보 영상 제작' },
@@ -37,7 +39,7 @@ portfolio.projects.forEach(project => {
     tile.addEventListener('click', () => openProject(project));
   }
   const cover = galleryCovers[project.id];
-  tile.innerHTML = `<span class="gallery-art"><img src="${cover.src}" alt="" loading="lazy" width="800" height="800"></span><span class="gallery-caption"><span class="gallery-name">${project.title}</span></span>`;
+  tile.innerHTML = `<span class="gallery-art"><img src="${cover.src}" alt="" loading="lazy" width="800" height="800"></span><span class="gallery-caption"><span class="gallery-name">${project.title}</span><span class="gallery-format">${project.href ? '웹사이트 · 새 탭' : project.video ? '영상 · 상세 보기' : '디자인 · 상세 보기'}</span></span>`;
   if (cover.role) {
     const role = document.createElement('span'); role.className = 'gallery-role'; role.textContent = cover.role;
     tile.querySelector('.gallery-caption').prepend(role);
@@ -92,6 +94,7 @@ function openProject(project) {
   if (project.images) {
     const section = document.createElement('section'); section.className = 'document-preview';
     const heading = document.createElement('h3'); heading.textContent = project.previewHeading || (project.video ? '함께 보는 제작기획서' : '작업 미리 보기'); section.append(heading);
+    const hint = document.createElement('p'); hint.className = 'preview-hint'; hint.textContent = '이미지를 누르면 크게 볼 수 있습니다.'; section.append(hint);
     project.images.forEach((src, index) => {
       const [width, height] = project.imageSizes?.[index] || project.imageSize || [1600, 900];
       const page = document.createElement('img');
@@ -102,7 +105,18 @@ function openProject(project) {
       page.height = height;
       page.loading = index === 0 ? 'eager' : 'lazy';
       page.decoding = 'async';
-      section.append(page);
+      const expand = document.createElement('button');
+      expand.type = 'button';
+      expand.className = 'document-expand';
+      expand.setAttribute('aria-label', `${page.alt} 확대 보기`);
+      expand.append(page);
+      expand.addEventListener('click', () => {
+        zoomImage.src = src; zoomImage.alt = page.alt;
+        zoomImage.style.width = `${width}px`;
+        zoomDialog.showModal();
+        zoomDialog.querySelector('.zoom-viewport').scrollTo(0, 0);
+      });
+      section.append(expand);
     });
     videoArea.append(section);
   }
@@ -119,3 +133,9 @@ dialog.addEventListener('close', () => {
   videoArea.querySelector('video')?.pause(); videoArea.replaceChildren(); document.body.style.overflow = '';
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+const zoomDialog = document.querySelector('#image-dialog');
+const zoomImage = document.querySelector('#zoom-image');
+document.querySelector('#zoom-close').addEventListener('click', () => zoomDialog.close());
+document.querySelector('#zoom-fit').addEventListener('click', () => { zoomImage.style.width = '100%'; });
+document.querySelector('#zoom-original').addEventListener('click', () => { zoomImage.style.width = `${zoomImage.naturalWidth}px`; });
+zoomDialog.addEventListener('close', () => { zoomImage.removeAttribute('src'); });

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#f6f1e7">
   <meta name="description" content="콜드·핫 섹션, 신메뉴 개발과 주방 운영을 경험한 요리사 출신 허윤성의 푸드 콘텐츠 기획·영상 제작 포트폴리오입니다.">
   <title>허윤성 — 요리사 출신 푸드 콘텐츠 제작자</title>
-  <link rel="stylesheet" href="styles.css?v=contact-bottom-35">
-  <script src="script.js?v=imac-thumbnails-33" defer></script>
+  <link rel="stylesheet" href="styles.css?v=feedback-36">
+  <script src="script.js?v=feedback-36" defer></script>
 </head>
 <body id="top">
   <a class="skip" href="#work">작업 바로 보기</a>
@@ -107,10 +107,19 @@
     <div class="dialog-content">
       <p class="eyebrow" id="dialog-category"></p>
       <h2 id="dialog-title"></h2>
-      <div id="video-area"></div>
       <p id="dialog-description"></p>
+      <p class="scope-label">작업 범위</p>
       <div id="dialog-tags" class="tags"></div>
+      <div id="video-area"></div>
     </div>
+  </dialog>
+  <dialog id="image-dialog" aria-label="작품 이미지 확대 보기">
+    <div class="zoom-toolbar">
+      <button type="button" id="zoom-fit">화면에 맞춤</button>
+      <button type="button" id="zoom-original">원본 크기</button>
+      <button type="button" id="zoom-close" aria-label="확대 보기 닫기">닫기 ✕</button>
+    </div>
+    <div class="zoom-viewport"><img id="zoom-image" alt=""></div>
   </dialog>
 </body>
 </html>

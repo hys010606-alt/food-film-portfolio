@@ -177,7 +177,7 @@ h2 { margin-top: 8px; font-size: clamp(32px, 4vw, 54px); line-height: 1.22; lett
 .gallery-art { display: block; width: 100%; aspect-ratio: 16 / 11; overflow: hidden; background: #e7decf; }
 .gallery-story .gallery-art { display: grid; place-items: center; background: #eee7da; }
 .gallery-story .gallery-art img {
-  width: 88%;
+  width: 100%;
   height: auto;
   aspect-ratio: 3 / 2;
   /* Trim the baked-in shadow outside the browser frame. */
@@ -293,3 +293,19 @@ dialog::backdrop { background: #1a1712b8; backdrop-filter: blur(4px); }
   .featured-preview img, .gallery-art img { transition: none; }
   .featured-preview:hover img, .project-button:hover img { transform: none; }
 }
+
+/* Feedback revision after 초안1 */
+.gallery-format { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.scope-label { margin-top: 14px; font-size: 11px; font-weight: 700; color: var(--muted); }
+#dialog-tags { margin-top: 6px; margin-bottom: 22px; }
+#dialog-description { margin-top: 0; }
+.document-expand { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.document-expand + .document-expand { margin-top: 16px; }
+.document-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+#image-dialog { width: calc(100% - 20px); max-width: 1440px; padding: 0; overflow: hidden; }
+.zoom-toolbar { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border-bottom: 1px solid var(--line); }
+.zoom-toolbar button { padding: 8px 12px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 3px; font: inherit; font-size: 13px; cursor: pointer; }
+#zoom-close { margin-left: auto; }
+.zoom-viewport { max-height: calc(90dvh - 70px); overflow: auto; overscroll-behavior: contain; }
+#zoom-image { display: block; max-width: none; height: auto; }
+.preview-hint { margin: -4px 0 12px; font-size: 12px; color: var(--muted); }
