@@ -7,7 +7,7 @@ const portfolio = {
     {id:'cg', food:true, category:'web', title:'혼밥일지 — 웹앱 개발', href:'https://hys010606-alt.github.io/food-film-portfolio/honbap/'},
     {id:'honbap-promo', food:true, category:'video', categoryLabel:'홍보 영상 제작', title:'혼밥일지 — 웹앱 홍보 영상', video:'assets/cg.mp4', poster:'assets/honbap-promo.jpg', videoLabel:'홍보 영상 원본 열기', tools:['홍보 영상 제작','영상 편집'], description:'직접 개발한 혼밥일지를 소개하기 위해 제작한 홍보 영상입니다. 일상에서 한 끼를 준비하는 장면과 웹앱의 사용 화면을 이어, 혼자서도 한 끼를 챙기고 기록하는 흐름을 보여줍니다.'},
     {id:'bose', category:'video', categoryLabel:'광고 제작 · 브랜드 영상', title:'BOSE — 세상의 소음을 끄다', video:'assets/bose.mp4', tools:['광고 제작','콘셉트 기획','콘티'], description:'BOSE 이어버드를 소재로 콘셉트 기획과 콘티부터 영상으로 구현한 광고 제작 작품입니다. 소음이 가득한 일상에서 나만의 고요와 몰입을 되찾는 순간을 담은 완성 영상과 제작기획서를 소개합니다.', document:'assets/bose-plan-design.pdf', documentLabel:'광고 제작기획서 PDF 열기', images:pages('bose-plan-design',12)},
-    {id:'detail', category:'design', categoryLabel:'소셜커머스 상세페이지 제작', title:'boboni — 이불 수납 파우치', images:['assets/boboni-detail-v2.webp'], document:'assets/boboni-detail-v2.png', documentLabel:'상세페이지 전체 이미지 열기', tools:['소셜커머스','상세페이지 제작','제품 정보 구성','비주얼 디자인'], description:'보보니 이불 수납 파우치를 소개하는 소셜커머스 상세페이지 제작 작품입니다. 제품의 장점을 쉽게 이해하고 구매에 필요한 정보를 확인할 수 있도록 사용 장면, 여섯 가지 수납 포인트, 압축 전후 비교, 컬러와 사이즈를 구성했습니다.'},
+    {id:'detail', category:'design', categoryLabel:'소셜커머스 상세페이지 제작', title:'boboni — 이불 수납 파우치', images:['assets/boboni-detail-v2.webp'], imageSize:[860,9287], document:'assets/boboni-detail-v2.png', documentLabel:'상세페이지 전체 이미지 열기', tools:['소셜커머스','상세페이지 제작','제품 정보 구성','비주얼 디자인'], description:'보보니 이불 수납 파우치를 소개하는 소셜커머스 상세페이지 제작 작품입니다. 제품의 장점을 쉽게 이해하고 구매에 필요한 정보를 확인할 수 있도록 사용 장면, 여섯 가지 수납 포인트, 압축 전후 비교, 컬러와 사이즈를 구성했습니다.'},
     {id:'illustration', category:'design', categoryLabel:'2D 그래픽 · 일러스트레이션', title:'하나투어 여행 프로모션', images:['assets/illustration-6.jpg',...pages('illustration',5),'assets/illustration-7.jpg'], document:'assets/illustration.pdf', documentLabel:'일러스트레이션 PDF 열기', tools:['일러스트레이션','포스터','목업'], description:'여러 나라의 랜드마크를 일러스트로 표현한 여행 프로모션 포스터입니다. 디자인 콘셉트와 타깃 분석에서 스케치, 시안, 목업까지 제작 과정을 소개합니다.'},
   ]
 };
@@ -90,20 +90,19 @@ function openProject(project) {
   if (project.images) {
     const section = document.createElement('section'); section.className = 'document-preview';
     const heading = document.createElement('h3'); heading.textContent = project.previewHeading || (project.video ? '함께 보는 제작기획서' : '작업 미리 보기'); section.append(heading);
-    const stage = document.createElement('img'); stage.className = 'document-page';
-    let current = 0;
-    const controls = document.createElement('div'); controls.className = 'page-controls';
-    const prev = document.createElement('button'); prev.textContent = '← 이전';
-    const next = document.createElement('button'); next.textContent = '다음 →';
-    const count = document.createElement('span'); count.setAttribute('aria-live','polite');
-    function render() {
-      stage.src = project.images[current]; stage.alt = `${project.title} ${current + 1} / ${project.images.length} 페이지`;
-      count.textContent = `${current + 1} / ${project.images.length}`;
-      prev.disabled = current === 0; next.disabled = current === project.images.length - 1;
-    }
-    prev.addEventListener('click', () => { current--; render(); }); next.addEventListener('click', () => { current++; render(); });
-    controls.append(prev,count,next); if (project.images.length > 1) section.append(controls);
-    section.append(stage); videoArea.append(section); render();
+    const [width, height] = project.imageSize || [1600, 900];
+    project.images.forEach((src, index) => {
+      const page = document.createElement('img');
+      page.className = 'document-page';
+      page.src = src;
+      page.alt = `${project.title} ${index + 1} / ${project.images.length} 페이지`;
+      page.width = width;
+      page.height = height;
+      page.loading = index === 0 ? 'eager' : 'lazy';
+      page.decoding = 'async';
+      section.append(page);
+    });
+    videoArea.append(section);
   }
   dialog.showModal(); dialog.scrollTop = 0; document.body.style.overflow = 'hidden';
 }
