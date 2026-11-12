@@ -317,3 +317,10 @@ dialog::backdrop { background: #1a1712b8; backdrop-filter: blur(4px); }
 .gallery-cg .iphone-mockup { background: #fff8ee; box-shadow: 0 0 0 2px #222, 0 5px 12px #30291c15; }
 .gallery-cg .iphone-mockup img { width: 100%; height: 100%; object-fit: cover; object-position: left top; border-radius: 0 0 9% 9%; }
 .iphone-mockup { padding: 0; } .gallery-cg .iphone-mockup img { position: absolute; top: 6.5%; left: 2%; width: 96%; height: 92%; object-fit: cover; }
+
+/* Contact: shared left edge, horizontal heading, details underneath. */
+.contact { flex-direction: column; align-items: flex-start; gap: 14px; text-align: left; }
+#contact-title { max-width: none; display: flex; flex-wrap: wrap; column-gap: .3em; }
+#contact-title span { white-space: nowrap; }
+.contact-details p { display: grid; grid-template-columns: 3em auto; gap: 10px; align-items: baseline; }
+.contact-details a { margin-left: 0; }
