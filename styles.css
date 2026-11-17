@@ -324,3 +324,6 @@ dialog::backdrop { background: #1a1712b8; backdrop-filter: blur(4px); }
 #contact-title span { white-space: nowrap; }
 .contact-details p { display: grid; grid-template-columns: 3em auto; gap: 10px; align-items: baseline; }
 .contact-details a { margin-left: 0; }
+
+.project-report { display: inline-block; margin-top: 8px; padding-block: 5px; font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+.project-report:hover { color: var(--accent); }

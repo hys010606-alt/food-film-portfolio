@@ -51,7 +51,18 @@ portfolio.projects.forEach(project => {
     const role = document.createElement('span'); role.className = 'gallery-role'; role.textContent = cover.role;
     tile.querySelector('.gallery-caption').prepend(role);
   }
-  article.append(tile); grid.append(article);
+  article.append(tile);
+  if (project.id === 'cg') {
+    const report = document.createElement('a');
+    report.className = 'project-report';
+    report.href = 'assets/honbap-design-report-v3.pdf';
+    report.target = '_blank';
+    report.rel = 'noopener';
+    report.textContent = '설계 과정 보고서 보기 · PDF ↗';
+    report.setAttribute('aria-label', '혼밥일지 설계 과정 보고서 PDF 보기 (새 탭)');
+    article.append(report);
+  }
+  grid.append(article);
 });
 document.querySelectorAll('[data-filter]').forEach(button => {
   button.addEventListener('click', () => {
